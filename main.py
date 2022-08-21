@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import ttk
+import sqlite3
 
 root = Tk()
 
@@ -22,22 +23,38 @@ def create_CUI():
             
             maintitle = Label(mainframe, text= "Anime \n Manager", font= ("Times New Roman", 24),bg= "#add8e6" )
             maintitle.grid(column=0, row=0,  pady= 20, columnspan= 3)
-            
+
+            def manager():
+                pass
+
+            def reports():
+                pass
+
+            def settings():
+                pass
+
+            def info():
+                pass
+
+            def close():
+                pass
+
             #Buttons
-            animeButton = ttk.Button(mainframe, text= "gestionar personajes")
+            animeButton = ttk.Button(mainframe, text= "Gestionar personajes", command= manager())
             animeButton.grid(column = 2, row = 2, ipadx=10, ipady= 10, padx=20, pady=20)
 
-            reportbutton = ttk.Button(mainframe, text = "Reportes")
+            reportbutton = ttk.Button(mainframe, text = "Reportes", command= reports())
             reportbutton.grid(column= 2, row = 3, ipadx=10, ipady= 10, padx=20, pady=20 )
 
-            configbutton = ttk.Button(mainframe, text = "Configuracion")
+            configbutton = ttk.Button(mainframe, text = "Configuracion", command= settings())
             configbutton.grid(column= 2 , row = 4, ipadx=10, ipady= 10, padx=10, pady=20)
 
-            infobutton = ttk.Button(mainframe, text= "Acerca De")
+            infobutton = ttk.Button(mainframe, text= "Acerca De", command= info())
             infobutton.grid(column= 2, row = 5, ipadx=10, ipady= 10, padx=20, pady=20)
 
-            closebutton = ttk.Button(mainframe, text = "Salir")
+            closebutton = ttk.Button(mainframe, text = "Salir", command= close())
             closebutton.grid(column=2, row = 6, ipadx=10, ipady= 10, padx=20, pady=20)
+
 
 
     win = interface(root)
