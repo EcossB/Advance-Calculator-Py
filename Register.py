@@ -1,7 +1,10 @@
+from ast import Raise
+from cProfile import label
 from optparse import Values
 from tkinter import * 
 from tkinter import ttk
 import sqlite3
+from tokenize import String
 
 class anime_interface:
     database = 'Anime_prog1.db'
@@ -83,7 +86,9 @@ class anime_interface:
 
 
         #button add characters
-        ttk.Button(frame1, text="Save character", command= self.insert_product).grid(row= 14, columnspan=2, sticky= W + E)
+        ttk.Button(frame1, text="Save character", command= self.insert_characters).grid(row= 14, columnspan=2, sticky= W + E)
+        ttk.Button( text="Delete ROW" , command= self.delete_characters).grid(row= 17, column = 0, columnspan= 2, sticky= W + E)
+        ttk.Button( text="Edit ROW", command= self.edit_characters).grid(row= 17, column =3, columnspan= 3, sticky= W + E)
 
         #Output to notificate the add user
         self.ms = Label(text= "", fg='black')
@@ -112,7 +117,7 @@ class anime_interface:
         self.table.heading('#13', text = 'lent', anchor= CENTER)
          
         #Setting the width of the columns of th treeview
-        self.table.column('#0', minwidth=0, width=25, stretch= YES)
+        self.table.column('#0', minwidth=0, width=0, stretch= YES)
         self.table.column('#1', minwidth=0, width=100, stretch= YES)
         self.table.column('#2', minwidth=0, width=100, stretch= YES)
         self.table.column('#3', minwidth=0, width=100, stretch= YES)
@@ -156,9 +161,9 @@ class anime_interface:
     
     def validate(self):
        return len(self.name.get()) != 0 and len(self.last_name.get()) != 0 #and len(self.serie.get()) != 0 and len(self.sex.get()) != 0 and len(self.state.get()) != 0
-
+    
     #function to insert data in the table
-    def insert_product(self):
+    def insert_characters(self):
         if self.validate():
             query = 'INSERT INTO personajess VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
             parar = (self.name.get(), self.last_name.get(),self.photo.get(), self.serie.get(), self.birth.get(), self.power.get(), self.phrase.get(), self.age.get(), self.sex.get(), self.state.get(), self.adress.get(), self.lati.get(),self.lenght.get())
@@ -181,6 +186,70 @@ class anime_interface:
         else:
             self.ms['text'] = 'name, last name, series, sex and state are required'
         self.get_data()
+
+
+    def delete_characters(self):
+        self.ms['text'] = ''
+        try:
+            self.table.item(self.table.selection())['values'][0]
+        except IndexError as e:
+            self.ms['text'] = 'Please select a row'
+            return 
+        self.ms['text'] = ''
+        id = self.table.item(self.table.selection())['values'][0]
+        delete_query = 'DELETE FROM personajess WHERE name = ?'
+        self.get_query(delete_query, (id, ))
+        if self.get_query(delete_query, (id, )) != 0:
+            self.ms['text'] = 'row {} deleted succesfully'.format(id)
+            self.get_data()
+        else:
+            self.ms['text'] = 'Please select a row'
+            self.get_data()
+
+    def edit_characters(self):
+        self.ms['text'] = ''
+        try:
+            self.table.item(self.table.selection())['values'][0]
+        except IndexError as e:
+            self.ms['text'] = 'Please select a row'
+            return 
+        name = self.table.item(self.table.selection())['values'][0]
+        lastname = self.table.item(self.table.selection())['values'][1]
+        url = self.table.item(self.table.selection())['values'][2]
+        ser = self.table.item(self.table.selection())['values'][3]
+        bir = self.table.item(self.table.selection())['values'][4]
+        power = self.table.item(self.table.selection())['values'][5]
+        phr = self.table.item(self.table.selection())['values'][6]
+        age = self.table.item(self.table.selection())['values'][7]
+        sex = self.table.item(self.table.selection())['values'][8]
+        state = self.table.item(self.table.selection())['values'][9]
+        ad = self.table.item(self.table.selection())['values'][10]
+
+        self.edit_wind = Toplevel()
+        self.edit_wind.title = "Edit character"
+
+        #old name
+        Label(self.edit_wind, text = "Old name: ").grid(row= 0, column=1)
+        Entry(self.edit_wind, textvariable= StringVar(self.edit_wind, value= name), state = 'readonly').grid(row = 0, column= 2)
+        #new name
+        Label(self.edit_wind, text = "New name: ").grid(row= 1, column=1)
+        self.new_name = Entry(self.edit_wind).grid(row= 1, column = 2)
+
+        #Old last name
+        ttk.Label(self.edit_wind, text = "Old Last Name: ").grid(row= 2, column=1)
+        Entry(self.edit_wind, textvariable= StringVar(self.edit_wind, value= lastname), state = 'readonly').grid(row = 2, column= 2)
+        #new last_name
+        Label(self.edit_wind, text = "New Last name: ").grid(row= 3, column=1)
+        self.new_last = Entry(self.edit_wind).grid(row= 3, column = 2)
+    
+        #Old url
+        Label(self.edit_wind, text = "Old URL: ").grid(row= 4, column=1)
+        Entry(self.edit_wind, textvariable= StringVar(self.edit_wind, value= url), state = 'readonly').grid(row = 4, column= 2)
+        #New url
+        Label(self.edit_wind, text = "New URL: ").grid(row= 5, column=1)
+        self.new_url = Entry(self.edit_wind).grid(row= 5, column = 2)
+
+        
 
 if __name__=='__main__':
     root = Tk()
