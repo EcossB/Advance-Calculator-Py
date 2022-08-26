@@ -2,6 +2,9 @@ from ast import Expression
 from tkinter import *
 from math import *
 import parser
+import sqlite3
+from tkinter import ttk as t
+from tkinter.tix import COLUMN
 
 i = 0
 #creatio of the class 
@@ -10,7 +13,7 @@ class calculator:
         self.wind = root
         self.wind.title('Calculator final')
 
-        
+        database = 'calculator.db'
 
         #creating the screen of the operations and numbers
         display = Entry(self.wind, width= 50, background = "gray64", foreground= "white", font=('Times New Romans', 15))
@@ -45,7 +48,9 @@ class calculator:
         Button(self.wind, text="^2", width= 9, height= 3, command=lambda:get_operations("**2")).grid(row=2, column=5, sticky= W+E)
         Button(self.wind, text="(", width= 9, height= 3, command=lambda:get_operations("(")).grid(row=3, column=4, sticky= W+E)
         Button(self.wind, text=")", width= 9, height= 3, command=lambda:get_operations(")")).grid(row=3, column=5, sticky= W+E)
-        Button(self.wind, text="=", width= 9, height= 3, command=lambda:calculate()).grid(row=4, column=4, sticky= W+E, columnspan= 2)
+        Button(self.wind, text="=", width= 9, height= 3, command=lambda:calculate()).grid(row=4, column=4, sticky= W+E, columnspan= 1)
+        Button(self.wind, text=u"\u2941", width= 9, height= 3, command=lambda:history()).grid(row=4, column=5, sticky= W+E)
+    
 
         #method that takes an index and number
         def get_numbers(n):
@@ -79,9 +84,48 @@ class calculator:
                 result=  eval(math_expr)
                 clear()
                 display.insert(0, result)
+
+
             except:
                 clear()
                 display.insert(0, 'Error')
+                        
+            query ='INSERT INTO procesos VALUES(NULL, ?, ?)'
+            parar = (display_state, str(result))
+            get_query(query, parar)
+            print(display_state, result)
+
+
+        def get_query( query, parameters = ()):
+            with sqlite3.connect(database) as c:
+                cursor = c.cursor()
+                result = cursor.execute(query, parameters)
+                c.commit()
+            return result
+        
+
+        def history():
+            history_wind = Toplevel()
+            history_wind.title("History")
+
+            for i in range(2):
+                for j in range(2):
+                    print(i)
+                    if i ==0:
+                        entry = Entry(history_wind, width=20, bg='LightSteelBlue',fg='Black',
+                                    font=('Arial', 16, 'bold'))
+                    else:
+                        entry = Entry(history_wind, width=20, fg='blue',
+                               font=('Arial', 16, ''))
+
+                entry.grid(row=i, column=j)
+                entry.insert(END, [i][j])
+            
+
+                
+
+      
+
 
 
         
