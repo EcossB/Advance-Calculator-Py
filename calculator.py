@@ -41,7 +41,8 @@ class calculator:
         Button(self.wind, text="x", width= 9, height= 3, command=lambda:get_operations("*")).grid(row=3, column=3, sticky= W+E)
         Button(self.wind, text=u"\u00f7", width= 9, height= 3, command=lambda:get_operations("/")).grid(row=4, column=3, sticky= W+E)
 
-        Button(self.wind, text=u"\u232B", width= 9, height= 3, command=lambda:Undo()).grid(row=1, column=4, sticky= W+E, columnspan= 2)
+        Button(self.wind, text=u"\u232B", width= 9, height= 3, command=lambda:Undo()).grid(row=1, column=4, sticky= W+E, columnspan= 1)
+        Button(self.wind, text="√", width= 9, height= 3, command=lambda:get_operations("**0.5")).grid(row=1, column=5, sticky= W+E, columnspan= 1)
         Button(self.wind, text="EXP", width= 9, height= 3, command=lambda:get_operations("**")).grid(row=2, column=4, sticky= W+E)
         Button(self.wind, text="^2", width= 9, height= 3, command=lambda:get_operations("**2")).grid(row=2, column=5, sticky= W+E)
         Button(self.wind, text="(", width= 9, height= 3, command=lambda:get_operations("(")).grid(row=3, column=4, sticky= W+E)
