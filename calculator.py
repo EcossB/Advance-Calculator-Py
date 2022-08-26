@@ -13,6 +13,24 @@ class calculator:
         self.display.grid(row= 0, columnspan= 4, sticky= W+E, ipady=30)
         self.display.focus()
 
+        #Creating buttons and inserting in the app
+        Button(self.wind, text="1", width= 9, height= 1).grid(row=1, column=0, sticky= W+E)
+        Button(self.wind, text="2", width= 9, height= 1).grid(row=1, column=1, sticky= W+E)
+        Button(self.wind, text="3", width= 9, height= 1).grid(row=1, column=2, sticky= W+E)
+
+        Button(self.wind, text="4", width= 9, height= 1).grid(row=2, column=0, sticky= W+E)
+        Button(self.wind, text="5", width= 9, height= 1).grid(row=2, column=1, sticky= W+E)
+        Button(self.wind, text="6", width= 9, height= 1).grid(row=2, column=2, sticky= W+E)
+
+        Button(self.wind, text="7", width= 9, height= 1).grid(row=3, column=0, sticky= W+E)
+        Button(self.wind, text="8", width= 9, height= 1).grid(row=3, column=1, sticky= W+E)
+        Button(self.wind, text="9", width= 9, height= 1).grid(row=3, column=2, sticky= W+E)
+
+
+        
+        #Button(self.wind, text="0", width= 9, height= 1).grid(row=1, column=0, sticky= W+E)
+
+
 
         
 
