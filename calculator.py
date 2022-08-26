@@ -1,12 +1,8 @@
-from ast import Expression
-from cgitb import text
-from email import message
 from tkinter import *
 from math import *
 import parser
 import sqlite3
-from tkinter import ttk as t
-from tkinter.tix import COLUMN
+
 
 i = 0
 #creatio of the class 
