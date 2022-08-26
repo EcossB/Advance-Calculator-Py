@@ -1,4 +1,6 @@
 from ast import Expression
+from cgitb import text
+from email import message
 from tkinter import *
 from math import *
 import parser
@@ -16,7 +18,7 @@ class calculator:
         database = 'calculator.db'
 
         #creating the screen of the operations and numbers
-        display = Entry(self.wind, width= 50, background = "gray64", foreground= "white", font=('Times New Romans', 15))
+        display = Entry(self.wind, width= 50, background = "#add8e6", foreground= "white", font=('Times New Romans', 15))
         display.grid(row= 0, columnspan= 6, sticky= W+E, ipady=30)
         display.focus()
 
@@ -108,18 +110,38 @@ class calculator:
             history_wind = Toplevel()
             history_wind.title("History")
 
-            for i in range(2):
-                for j in range(2):
-                    print(i)
-                    if i ==0:
-                        entry = Entry(history_wind, width=20, bg='LightSteelBlue',fg='Black',
-                                    font=('Arial', 16, 'bold'))
-                    else:
-                        entry = Entry(history_wind, width=20, fg='blue',
-                               font=('Arial', 16, ''))
+            screen2= Text(history_wind,state= "disabled", width= 50, height= 5, background="#add8e6", foreground="white", font=("Times New Romans", 15))
+            screen2.grid(row= 0, column= 0, columnspan=4, padx = 5, pady = 5)
 
-                entry.grid(row=i, column=j)
-                entry.insert(END, [i][j])
+            Button(history_wind, width= 9, height=3, text="Back", command=lambda:destroy()).grid(row = 1, column= 0, columnspan=4,sticky= W+E)
+
+            #def get_data():
+            query = 'SELECT * FROM procesos ORDER BY ID DESC'
+            data = get_query(query)
+            tup1 = tuple('=')
+            tup = tuple('|')
+
+            for row in data:
+                op = row[1:2]
+                re = row[2:3]
+                screen2.configure(state= "normal")
+                #screen2.insert(END, tup + op + tup1)
+                #screen2.insert(END,  re + tup)
+                print(row[1:3],'\n')
+                mess = '''
+                        Operation {op} Result {re}
+                        '''
+                mess = mess.replace("{op}", str(op))
+                mess = mess.replace("{re}",str(re))
+                screen2.insert(END, mess)
+                screen2.configure(state="disabled")
+
+            def destroy():
+                history_wind.destroy()
+
+
+
+        
             
 
                 
