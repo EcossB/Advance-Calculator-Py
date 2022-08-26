@@ -48,7 +48,7 @@ class calculator:
         Button(self.wind, text="(", width= 9, height= 3, command=lambda:get_operations("(")).grid(row=3, column=4, sticky= W+E)
         Button(self.wind, text=")", width= 9, height= 3, command=lambda:get_operations(")")).grid(row=3, column=5, sticky= W+E)
         Button(self.wind, text="=", width= 9, height= 3, command=lambda:calculate()).grid(row=4, column=4, sticky= W+E, columnspan= 1)
-        Button(self.wind, text=u"\u2941", width= 9, height= 3, command=lambda:history()).grid(row=4, column=5, sticky= W+E)
+        Button(self.wind, text="↻", width= 9, height= 3, command=lambda:history()).grid(row=4, column=5, sticky= W+E)
     
 
         #method that takes an index and number
