@@ -1,7 +1,7 @@
-# Advance Calculator With History database
+# 🧑‍💻 Advance Calculator With History database 🧑‍💻
 ![Advance_Calculator](https://user-images.githubusercontent.com/107286075/187012001-ddba71c0-3113-4018-8b30-487bffd9d4ac.png)
 
-## This is an advance calculator project that i did for my final project of PROG1
+## 🧑‍💻 This is an advance calculator project that i did for my final project of PROG1 🧑‍💻
 
 This project is a model of an advance calculator that was built along different examples that taught me how to do it. 
 Every part of this project is a sample code which shows how to do the following:
@@ -20,7 +20,7 @@ The technologies that i used for this project are:
 Its a super interesting project because its not that easy as looks, i Had to create many functions to get the operations and also create too many buttons.
 The database was the funniest part, because i love  manipulate data and retrieve it to insert them so user can see what has done.
 
-## Pre Requirements
+## 🧑‍💻 Pre Requirements 🧑‍💻
 these are the most important things that u need in your computer to run this project succesfully :
 
 * Python 3.9.10.
@@ -30,13 +30,13 @@ these are the most important things that u need in your computer to run this pro
 its not neccesary to manually install the tkinter module or the sqlite3 module, because python already has them installed by default.
 Once you have these two things downloaded in your computer you can go to the next step.
  
-## How to install it 
+## 🧑‍💻 How to install it  🧑‍💻
 The easiest way to install this project is in the following way:
 * Clone this repository. 
 * enjoy the project.
 You were expecting more? hahahahaha, nope, just cloning this repository is enough.
 
-## How to use it 
+## 🧑‍💻 How to use it  🧑‍💻
 To know how to use my calculator, i'll drop a video made by me that explain you the most important things to use it, hope u understand the video and enjoy how to use my calculator
 
 
@@ -44,7 +44,7 @@ https://user-images.githubusercontent.com/107286075/187011596-2f19c5a6-7833-406c
 
 Link video: https://youtu.be/GUin0z0_N38
 
-## Credits
+## 🧑‍💻 Credits 🧑‍💻
 Here are my different social medias where you can reach me:
 * IG: erwincossb
 * Github: EcossB
