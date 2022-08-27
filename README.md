@@ -43,4 +43,16 @@ https://user-images.githubusercontent.com/107286075/187011596-2f19c5a6-7833-406c
 
 Link video: https://youtu.be/GUin0z0_N38
 
+## Credits
+Here are my different social medias where you can reach me:
+* IG: erwincossb
+* Github: EcossB
+* Twitter: ErwingCossb
+* Linkedin: https://www.linkedin.com/in/erwing-armando-coss-batista-602366234/
+
+Also if you want to know where i take the example of this project, here is the YT link video: https://www.youtube.com/watch?v=0KmcgQoaiwA
+
+
+
+
 
