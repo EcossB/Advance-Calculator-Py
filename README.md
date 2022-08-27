@@ -29,11 +29,18 @@ these are the most important things that u need in your computer to run this pro
 its not neccesary to manually install the tkinter module or the sqlite3 module, because python already has them installed by default.
 Once you have these two things downloaded in your computer you can go to the next step.
  
-## How to install
+## How to install it 
 The easiest way to install this project is in the following way:
 * Clone this repository. 
-* enjoy the project
+* enjoy the project.
+You were expecting more? hahahahaha, nope, just cloning this repository is enough.
 
-## how to use it 
+## How to use it 
+To know how to use my calculator, i'll drop a video made by me that explain you the most important things to use it, hope u understand the video and enjoy how to use my calculator
+
+
+https://user-images.githubusercontent.com/107286075/187011596-2f19c5a6-7833-406c-a061-57b01b299f0e.mp4
+
+Link video: https://youtu.be/GUin0z0_N38
 
 
